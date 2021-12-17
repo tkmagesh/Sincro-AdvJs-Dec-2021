@@ -52,6 +52,9 @@ JavaScript
         3. Using the 'call' method of the function
         4. Using the 'apply' method of the function
 
+        5. Immediately Invoked Function Expression (IIFE)
+
+
 apply
 bind
 call

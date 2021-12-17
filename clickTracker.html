@@ -5,10 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click Tracker</title>
+    <script>
+        (function(){
+            var count = 0;
+            function track(){
+                var divCounter = document.getElementById('divCounter');
+                ++count;
+                divCounter.innerHTML = count
+            }
+            function init(){
+                var btnTrack = document.getElementById('btnTrack');
+                btnTrack.addEventListener('click', track)
+            }
+            window.addEventListener('DOMContentLoaded', init);
+        })();
+    </script>
 </head>
 <body>
     <h1>Click Tracker</h1>
     <button id="btnTrack">Track</button>
-    <div>0</div>
+    <div id="divCounter">0</div>
 </body>
 </html>
+
