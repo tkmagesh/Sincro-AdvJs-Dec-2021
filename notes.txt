@@ -55,6 +55,7 @@ JavaScript
         5. Immediately Invoked Function Expression (IIFE)
 
 
+
 apply
 bind
 call
@@ -64,3 +65,11 @@ emp.whoAmI()
 
 Functional
 whoAmI.call(obj)
+
+Steps for creating a closure
+    1. Outer function
+    2. Variable in the outer function
+    3. Inner function
+    4. Variable in the outer function is referenced in the inner function
+    5. Extend the lifetime of the inner function beyond the lifetime of the outer function
+        Now, the lifetime of the varible is controlled by the lifetime of the inner function
