@@ -1,0 +1,26 @@
+Schedule:
+    Commence    : 10:00 AM
+    Tea Break   : 11:30 AM (15 mins)
+    Lunch       : 1:00 PM (1 Hr)
+    Tea Break   : 3:30 PM (15 mins)
+    Wind up     : 5:00 PM
+
+Methodology:
+    No Powerpoint
+    Handson Driven
+
+JavaScript
+
+    Line Oriented
+    Procedural 
+    Object Based
+    Object Oriented
+    Functional
+    
+    Functional + Prototype 
+        Functions as data
+            Higher Order Functions
+                Functions can be passed as parameters to functions
+                Functions can be returned from functions
+
+    Functions ARE Objects
