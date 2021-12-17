@@ -76,3 +76,4 @@ var spinner = (function(){
         decrement: decrement
     }    
 })()
+
