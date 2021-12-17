@@ -22,5 +22,42 @@ JavaScript
             Higher Order Functions
                 Functions can be passed as parameters to functions
                 Functions can be returned from functions
+            Variadic functions
 
     Functions ARE Objects
+
+    static & dynamic
+
+    strongly type & loosely typed
+
+    1. this
+    2. arguments
+        array like object containing all the arguments passed to the function
+            arguments[0]
+            arguments[1]
+            arguments.length
+
+
+    In JavaScript, It doesn't matter WHERE the function or WHO owns the function
+    what matters is 'HOW' the function is invoked
+
+    this (INVOCATION CONTEXT)
+
+    Function Invocation Patterns
+        1. As a method of an obj
+            this -> obj
+        2. As a function
+            this -> global (window i`n the browser)
+
+        3. Using the 'call' method of the function
+        4. Using the 'apply' method of the function
+
+apply
+bind
+call
+
+OO
+emp.whoAmI()
+
+Functional
+whoAmI.call(obj)
