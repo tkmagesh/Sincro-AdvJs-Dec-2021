@@ -175,3 +175,8 @@ Asynchronous Operation
 
     Promise an object designed to HOLD the result of an asynchronous operation and notify the subscribers
     Every subscription to a promise returns a new promise
+
+    doSomething()
+        .then(doSomethingElse)
+        .then(doSomethingElse)
+        .then(doSomethingElse)
