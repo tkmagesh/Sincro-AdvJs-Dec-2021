@@ -54,6 +54,11 @@ JavaScript
 
         5. Immediately Invoked Function Expression (IIFE)
 
+        6. Using the 'new' keyword (constructor function)
+            this -> new object
+            this -> returned by default
+            convention - function name starts with an upper case letter
+
 
 
 apply
