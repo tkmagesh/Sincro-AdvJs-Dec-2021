@@ -165,3 +165,13 @@ Prototypal inheritance
 
 Commonility Variability
     Keep what is common together and move out what is varying
+
+Asynchronous Operation
+    1. Callbacks
+    2. Promises
+    3. Async/Await
+    4. generators
+    5. observables (rxjs)
+
+    Promise an object designed to HOLD the result of an asynchronous operation and notify the subscribers
+    Every subscription to a promise returns a new promise
