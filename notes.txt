@@ -140,3 +140,5 @@ spinner.decrement() //=> 1
 spinner.decrement() //=> 0
 spinner.decrement() //=> -1
 
+Assignment:
+Create the spinner as a constructor function
