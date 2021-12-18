@@ -148,7 +148,7 @@ describe('Filtering', function(){
     describe('Costly products [cost > 50]', function(){
         function filterCostlyProducts(){
             var costlyProducts = [];
-            for(var i = 0; i < products.length-1; i++)
+            for(var i = 0; i < products.length; i++)
                 if (products[i].cost > 50)
                     costlyProducts.push(products[i])
             return costlyProducts;
@@ -159,35 +159,51 @@ describe('Filtering', function(){
     describe("Any list by any criteria", function(){
         function filter(list, criteriaFn){
             var result = [];
-            for(var i = 0; i < list.length-1; i++)
+            for(var i = 0; i < list.length; i++)
                 if (criteriaFn(list[i]))
                     result.push(list[i])
             return result;
         }
+        function negate(criteriaFn){
+            return function(){
+                return !criteriaFn.apply(this, arguments)
+            }
+        }
         describe("Products by cost", function(){
+            var costlyProductCriteria = function(product){
+                return product.cost > 50;
+            }
             describe('costly products [cost > 50]', function(){
-                var costlyProductCriteria = function(product){
-                    return product.cost > 50;
-                }
                 var costlyProducts = filter(products, costlyProductCriteria)
                 console.table(costlyProducts)
             })
             describe('affordable products', function(){
-
+                /* 
+                var affordableProductCriteria = function(product){
+                    return !costlyProductCriteria(product);
+                } 
+                */
+               var affordableProductCriteria = negate(costlyProductCriteria);
+                var affordableProducts = filter(products, affordableProductCriteria)
+                console.table(affordableProducts)
             })
         })
 
         describe('Products by units', function(){
-
+            var undetStockedProductCriteria = function(product){
+                return product.units < 50;
+            }
             describe('understocked products [units < 50]', function(){
-                var undetStockedProductCriteria = function(product){
-                    return product.units < 50;
-                }
                 var underStockedProducts = filter(products, undetStockedProductCriteria)
                 console.table(underStockedProducts)
             })
             describe('wellStocked products', function(){
-                
+                /* var wellStockedProductCriteria = function(product){
+                    return !undetStockedProductCriteria(product)
+                } */
+                var wellStockedProductCriteria = negate(undetStockedProductCriteria)
+                wellStockedProducts = filter(products, wellStockedProductCriteria)
+                console.table(wellStockedProducts);
             })
         });
     })
