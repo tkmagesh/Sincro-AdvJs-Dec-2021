@@ -145,3 +145,17 @@ Create the spinner as a constructor function
 
 
 Prototypal inheritance
+    An object acts as a base for a family of objects
+
+    The relationship between the 'base' object and 'derived' object is maintained using a hidden attribute '__proto__'
+
+    The process of resolving an attribute by tracing the __proto__ attribute is called 'prototype hopping'
+
+    'prototype hopping' happens ONLY when READING an attribute value
+
+    Never use '__proto__' in the code
+        __proto__ is an implementation detail
+
+        1. Accessing the base object should be ONLY through the <ConstructorFunction>.prototype
+        2. Why is __proto__ is accessible to the developer?
+            Because 'hiding anything in javascript is costly' Why?
