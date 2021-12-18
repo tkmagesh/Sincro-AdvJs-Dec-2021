@@ -43,6 +43,14 @@ function describe(title, fn){
     console.groupEnd();
 }
 
+function describeGroup(groupedObj){
+    for(var key in groupedObj){
+        describe('Key - [' + key + ']', function(){
+            console.table(groupedObj[key])
+        });
+    }
+}
+
 describe('Initial List', function(){
     console.table(products);
 });
@@ -89,6 +97,12 @@ describe('Soring', function(){
         }
 
     }
+
+    function getDescComparer(comparerFn){
+        return function(){
+            return comparerFn.apply(this, arguments) * -1
+        }
+    }
     describe('Any list by any attribute', function(){
         /* function sort(list, attrName){
             for (var i = 0; i < list.length-1; i++) {
@@ -120,7 +134,7 @@ describe('Soring', function(){
                 
             }
         } */
-        describe('Products By Value (cost * units )', function(){
+        describe("Proucts by value ", function(){
             var productComparerByValue = function(p1, p2){
                 var p1Value = p1.cost * p1.units,
                     p2Value = p2.cost * p2.units;
@@ -128,12 +142,17 @@ describe('Soring', function(){
                 if (p1Value < p2Value) return -1
                 return 0;
             }
-            sort(products, productComparerByValue)
-            console.table(products)
-        });
-        describe('Products By Value (cost * units ) in descending order', function(){
-           //TO BE IMPLEMENTED
-        });
+            describe('Sorting Products By Value (cost * units )', function(){
+                
+                sort(products, productComparerByValue)
+                console.table(products)
+            });
+            describe('Products By Value (cost * units ) in descending order', function(){
+                var productComparerByValueDesc = getDescComparer(productComparerByValue)
+                sort(products, productComparerByValueDesc)
+                console.table(products);
+            });
+        })
     })
 
     
@@ -208,3 +227,24 @@ describe('Filtering', function(){
         });
     })
 });
+
+
+describe('grouping', function(){
+    function groupBy(list, keySelectorFn){
+        var result = {};
+        for(var i = 0; i < list.length; i++){
+            var key = keySelectorFn(list[i])
+            if (typeof result[key] === 'undefined')
+                result[key]= [];
+            result[key].push(list[i])
+        }
+        return result;
+    }
+    describe("Products by category", function(){
+        var categoryKeySelector = function(product){
+            return product.category;
+        }
+        var productsByCategory = groupBy(products, categoryKeySelector);
+        describeGroup(productsByCategory);
+    })
+})

@@ -5,6 +5,8 @@ Schedule:
     Tea Break   : 3:30 PM (15 mins)
     Wind up     : 5:00 PM
 
+https://forms.gle/T9jvaU7k9ovEFg5H6
+
 Methodology:
     No Powerpoint
     Handson Driven
@@ -159,3 +161,7 @@ Prototypal inheritance
         1. Accessing the base object should be ONLY through the <ConstructorFunction>.prototype
         2. Why is __proto__ is accessible to the developer?
             Because 'hiding anything in javascript is costly' Why?
+
+
+Commonility Variability
+    Keep what is common together and move out what is varying
