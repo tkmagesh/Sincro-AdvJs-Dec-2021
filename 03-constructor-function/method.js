@@ -10,3 +10,4 @@ function Employee(id, name, salary){
         console.log(this.id, this.name, this.salary);
     };
 }
+
