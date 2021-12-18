@@ -64,8 +64,33 @@ describe('Soring', function(){
         sortProducts();
         console.table(products)
     });
+    function sort(list, comparer){
+        var comparerFn;
+        if (typeof comparer === 'function'){
+            comparerFn = comparer;
+        }
+        if (typeof comparer === 'string'){
+            comparerFn = function(p1, p2){
+                if (p1[comparer] < p2[comparer]) return -1;
+                if (p1[comparer] > p2[comparer]) return 1;
+                return 0
+            }
+        }
+        if (!comparerFn) return;
+        for (var i = 0; i < list.length-1; i++) {
+            for (var j = i + 1; j < list.length; j++){
+                if ( comparerFn(list[i], list[j]) > 0 ){
+                    var temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
+                }
+            }
+            
+        }
+
+    }
     describe('Any list by any attribute', function(){
-        function sort(list, attrName){
+        /* function sort(list, attrName){
             for (var i = 0; i < list.length-1; i++) {
                 for (var j = i + 1; j < list.length; j++){
                     if (list[i][attrName] > list[j][attrName] ){
@@ -76,14 +101,14 @@ describe('Soring', function(){
                 }
                 
             }
-        }
+        } */
         describe('Products By Name', function(){
             sort(products, 'name')
             console.table(products)
         });
     })
      describe('Any list by any comparer', function(){
-        function sort(list, comparerFn){
+        /* function sort(list, comparerFn){
             for (var i = 0; i < list.length-1; i++) {
                 for (var j = i + 1; j < list.length; j++){
                     if ( comparerFn(list[i], list[j]) > 0 ){
@@ -94,7 +119,7 @@ describe('Soring', function(){
                 }
                 
             }
-        }
+        } */
         describe('Products By Value (cost * units )', function(){
             var productComparerByValue = function(p1, p2){
                 var p1Value = p1.cost * p1.units,
@@ -106,6 +131,9 @@ describe('Soring', function(){
             sort(products, productComparerByValue)
             console.table(products)
         });
+        describe('Products By Value (cost * units ) in descending order', function(){
+           //TO BE IMPLEMENTED
+        });
     })
 
     
@@ -116,9 +144,51 @@ describe('Soring', function(){
     L == R =>  == 0
  */
 
-/* describe('Filtering', function(){
+describe('Filtering', function(){
     describe('Costly products [cost > 50]', function(){
-        //filter
-        console.table(products)
+        function filterCostlyProducts(){
+            var costlyProducts = [];
+            for(var i = 0; i < products.length-1; i++)
+                if (products[i].cost > 50)
+                    costlyProducts.push(products[i])
+            return costlyProducts;
+        }
+        var costlyProducts = filterCostlyProducts()
+        console.table(costlyProducts)
     });
-}); */
+    describe("Any list by any criteria", function(){
+        function filter(list, criteriaFn){
+            var result = [];
+            for(var i = 0; i < list.length-1; i++)
+                if (criteriaFn(list[i]))
+                    result.push(list[i])
+            return result;
+        }
+        describe("Products by cost", function(){
+            describe('costly products [cost > 50]', function(){
+                var costlyProductCriteria = function(product){
+                    return product.cost > 50;
+                }
+                var costlyProducts = filter(products, costlyProductCriteria)
+                console.table(costlyProducts)
+            })
+            describe('affordable products', function(){
+
+            })
+        })
+
+        describe('Products by units', function(){
+
+            describe('understocked products [units < 50]', function(){
+                var undetStockedProductCriteria = function(product){
+                    return product.units < 50;
+                }
+                var underStockedProducts = filter(products, undetStockedProductCriteria)
+                console.table(underStockedProducts)
+            })
+            describe('wellStocked products', function(){
+                
+            })
+        });
+    })
+});
