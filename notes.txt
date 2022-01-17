@@ -180,3 +180,14 @@ Asynchronous Operation
         .then(doSomethingElse)
         .then(doSomethingElse)
         .then(doSomethingElse)
+
+
+    1. let
+    2. const
+    3. array destructuring
+    4. rest operator array
+    5. spread operator array
+
+
+Patterns
+    1. Revealing Module Pattern

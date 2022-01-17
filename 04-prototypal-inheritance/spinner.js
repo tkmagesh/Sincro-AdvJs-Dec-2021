@@ -14,6 +14,19 @@ Spinner.prototype.decrement = function(){
     return --this.__counter__;
 }
 
+/* ES6 version of the above */
+class Spinner{
+    __counter__ = 0;
+
+    increment(){
+        return ++this.__counter__;
+    }
+
+    decrement(){
+        return --this.__counter__;
+    }
+}
+
 
 
 /* 

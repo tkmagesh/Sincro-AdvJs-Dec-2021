@@ -74,6 +74,6 @@ var spinner = (function(){
     return {
         increment: increment,
         decrement: decrement
-    }    
+    }
 })()
 

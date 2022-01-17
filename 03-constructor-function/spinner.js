@@ -9,3 +9,4 @@ function Spinner(){
         return --counter;
     }
 }
+
