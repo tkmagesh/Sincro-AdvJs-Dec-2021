@@ -14,6 +14,13 @@ grouping
 pubsub
 */
 
+/* Pattern applied */
+/* 
+    strategy pattern - comparers
+    specfication pattern - criteriaFn / predicate
+    decorator pattern - getDescComparer, negate
+*/
+
 /* console.group('Initial List')
     console.table(products);
 console.groupEnd();
