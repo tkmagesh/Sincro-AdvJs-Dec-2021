@@ -36,3 +36,24 @@ let radio = (function(){
 
 	return radio;
 })();
+
+//Usage:
+//subscriptions
+radio('evt-1').subscribe(function(...args){
+    console.log('[evt-1](s1) triggered with ', args);
+})
+
+radio('evt-1').subscribe(function(...args){
+    console.log('[evt-1](s2) triggered with ', args);
+})
+
+radio('evt-2').subscribe(function(...args){
+    console.log('[evt-2](s1) triggered with ', args);
+})
+
+radio('evt-2').subscribe(function(...args){
+    console.log('[evt-2](s2) triggered with ', args);
+})
+
+//publisher
+radio('evt-1').broadcast(10,20,30)
